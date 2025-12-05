@@ -1,7 +1,34 @@
 #include <stdio.h>
 
-// Desafio de Xadrez - MateCheck
+void movertorre(int casas){    //Recursão do movimento da torre//  
+    if (casas > 0) {
+        printf("Direita\n");
+        movertorre(casas-1);
+    }
+}
+void moverbispo(int casas) {
+    if (casas > 0){
 
+    //Loop externo vertical//
+    for (int i = 0; i < 1; i++) {
+        //Loop interno horizontal//
+        for (int j = 0; j < 1; j++) {
+            printf("Direita ");
+        }
+        printf("Cima\n");
+    }
+    
+    //Recursão delimita quantos loops faltam//
+    moverbispo(casas - 1);
+   }
+}
+
+void moverrainha(int casas){ //Recursão do movimento da rainha//
+    if (casas > 0) {
+        printf("Direita\n");
+        moverrainha(casas-1);
+    }
+}
 
 int main() {
     
@@ -9,33 +36,26 @@ int main() {
   t = 5; 
   b = 5;
   r = 8;
-  c1 = 2; //Adicionando a variavel do cavalo 
+  c1 = 2; //Adicionando a variavel do cavalo// 
   c2 = 1; 
 
-  for (int i = 0; i < t; i++){ //Realizando a movimentação da torre com FOR//
-    printf("Direita\n");        //A CADA VERIFICAÇÃO DA CONDIÇÃO UMA CASA SERÁ ANDADA PELA TORRE//
-  }
-  int i = 0;
-  while (i<b){               //Realizando a movimentação do bispo com WHILE// O NÚMERO DE MOVIMENTOS FOI DEFINIDO NO INICIO
-    printf("Cima, Direita\n");//ENQUANTO i FOR MENOR QUE b O BISPO VAI ANDAR 
-
-    i++;
-  }
-  
-  i = 0;
-  do{                 //Realizando a movimentação da rainha com DO - WHILE// 
-    printf("Esquerda\n"), i++; //ELA VAI ANDAR PRIMEIRO E DEPOIS O SISTEMA FAZ A VERIFICAÇÃO//
-  } while (i<r);
-  
-  printf("\n");    //Adicionando uma linha em branco para separar os comandos impressos;
-  for (int i = 0; i < c2; i++)
+  movertorre(t);
+  printf("\n");
+  moverbispo(b);
+  printf("\n");
+  moverrainha(r);
+  printf("\n");
+  for (int i = 1; i <= c1; i++)  //Realizando a movimentação do cavalo com loops aninhados//
   {
-    //Realizando o loop dentro do for que vai andar o cavalo para a esquerda
-    for(int j = 0; j < c1; j++){
-     printf("Baixo\n"); //Esse for serve para andar duas casas pra baixo para representar como o cavalo anda           
+    for (int j = 0  ; j < c2; j++)
+    {
+        if (i < c1 ){
+            continue;
+        }
+        printf("Direita\n"); //Realizando a última movimentação//
+        break;
     }
-   printf("Esquerda\n");
+    printf("Cima\n");
   }
-    
-    return 0;
+return 0;
 }

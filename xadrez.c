@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void movertorre(int casas){    //Recursão do movimento da torre//  
+void movertorre(int casas){ //Recursão do movimento da torre//  
     if (casas > 0) {
         printf("Direita\n");
         movertorre(casas-1);
